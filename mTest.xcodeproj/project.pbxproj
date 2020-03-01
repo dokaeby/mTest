@@ -23,6 +23,7 @@
 		9A3630F4240B3A09003C9393 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3630F1240B3A09003C9393 /* Toast.swift */; };
 		9A3630F5240B3A09003C9393 /* Rx+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3630F2240B3A09003C9393 /* Rx+UIViewController.swift */; };
 		9A3630F6240B3A09003C9393 /* Rx+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3630F3240B3A09003C9393 /* Rx+Alamofire.swift */; };
+		9AB3A46B240B75760005EE2E /* SearchRepoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3A46A240B75760005EE2E /* SearchRepoVM.swift */; };
 		9AC285AA240B2EA900946BAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC285A9240B2EA900946BAF /* AppDelegate.swift */; };
 		9AC285AF240B2EA900946BAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC285AD240B2EA900946BAF /* Main.storyboard */; };
 		9AC285B1240B2EAA00946BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC285B0240B2EAA00946BAF /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		9A3630F1240B3A09003C9393 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		9A3630F2240B3A09003C9393 /* Rx+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+UIViewController.swift"; sourceTree = "<group>"; };
 		9A3630F3240B3A09003C9393 /* Rx+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+Alamofire.swift"; sourceTree = "<group>"; };
+		9AB3A46A240B75760005EE2E /* SearchRepoVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoVM.swift; sourceTree = "<group>"; };
 		9AC285A6240B2EA900946BAF /* mTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC285A9240B2EA900946BAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AC285AE240B2EA900946BAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				9A3630D9240B39BA003C9393 /* SearchListVCell.swift */,
 				9A3630DA240B39BA003C9393 /* SearchRepoVC.swift */,
+				9AB3A46A240B75760005EE2E /* SearchRepoVM.swift */,
 			);
 			path = GithubSearchRepos;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				9A3630E9240B39EA003C9393 /* TargetType.swift in Sources */,
 				9A3630ED240B39F4003C9393 /* GitHubService.swift in Sources */,
 				9A3630EF240B39F4003C9393 /* ServiceError.swift in Sources */,
+				9AB3A46B240B75760005EE2E /* SearchRepoVM.swift in Sources */,
 				9A3630DC240B39BA003C9393 /* SearchRepoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

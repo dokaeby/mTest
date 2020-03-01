@@ -25,13 +25,13 @@ class SearchRepoVC: UIViewController {
     
     lazy var countPerPage: Int = 30
     lazy var pageCount: Int = 0
+    
+    var  searchVM:SearchRepoVM!
+    
     //MARK:- UI Properties
     private struct UI {
         static let basicMargin: CGFloat = 10
-        static let searchButtonWidth: CGFloat = 80
         static let searchButtonHeight: CGFloat = 50
-        static let width: CGFloat = 200
-        static let height: CGFloat = 60
         static let cellHeight: CGFloat = 80
     }
     // Search Bar
@@ -116,31 +116,23 @@ class SearchRepoVC: UIViewController {
     // MARK:- UI action binding
     func setupUIBinding() -> Void {
         
-        weak var ws = self
+        searchVM = SearchRepoVM()
         
-        searchBar.rx.text
-            .orEmpty                                                                                // 입력된 text가 비어있는지 확인
-            .filter { searchRepoKeyword in
-                return searchRepoKeyword.count > 2                                                  // 입력된 text가 2보다 큰 경우만 검색하도록 필터링
-            }
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)                        // 이벤트 발생하고 300ms후 네트워크 검색
-            .flatMapLatest { searchRepoKeyword in                                                   // 입력된 text로 네트워크 호출후 수신한 응답에서 가장 최신 결과를 전달
-
-                return GitHubService().requestGitHubSearchReposRx(page:0,repoName:searchRepoKeyword)// github repo 검색 API 호출
-                                      .retry(2)                                                     // 네트워크 호출이 실패할 경우 retry
-                                      .observeOn(ConcurrentDispatchQueueScheduler(qos: .default))   // 백그라운드 스케줄러에서 네트워크 처리
+        searchBar.rx.text.orEmpty                                                                   // 입력된 text가 비어있는지 확인
+            .bind(to: searchVM.searchText)                                                          // VM에 binding
+            .disposed(by: self.disposeBag)
                 
-            }
-            .map { response in                                                                      // 수신한 response에서 items 리스트만 전달하도록 매핑
-                return response.items!
-            }
-            .bind(to: searchListV.rx.items) {                                                       // 수신한 items리스트를 tableview와 bind하여 결과를 출력
+        searchVM.dataList                                                                           // 수신한 repo data 수신시 처리
+            .asDriver(onErrorJustReturn: [])
+            .drive(searchListV.rx.items) {                                                          // 수신한 items리스트를 tableview와 bind하여 결과를 출력
                 tableView, indexPath, repo in
                 iPrint("repo = \(repo)")
                 let cell = tableView.dequeueReusableCell(withIdentifier: SearchListVCell.CellIdentifier)! as? SearchListVCell
                 cell?.configure(repo)                                                               // 수신한 데이타를 각 cell에 전달하여 출력
                 return cell!
             }
+            .disposed(by: self.disposeBag)
+
     }
 }
 

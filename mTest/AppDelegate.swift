@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setupKeyWindow()
         return true
     }
 
@@ -41,6 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+extension AppDelegate {
+    
+    private func setupKeyWindow() -> Void {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let vc = SearchRepoVC()
+        let navigationController = UINavigationController(rootViewController: vc)
+        window?.rootViewController = navigationController
+        window?.backgroundColor = .white
+        window?.makeKeyAndVisible()
+    }
 }
 
